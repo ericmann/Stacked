@@ -16,5 +16,9 @@ if( ! defined('STACKED_PLUGIN_DIR') )
 
 require_once('/lib/class.stacked.php');
 
-add_action( 'init', 'Stacked::register_people' );
+add_action( 'init', array('Stacked', 'register_people') );
+
+add_filter( 'enter_title_here', array('Stacked', 'enter_name_here') );
+
+add_shortcode( 'pageOrder', array('Stacked', 'stack_pages') );
 ?>

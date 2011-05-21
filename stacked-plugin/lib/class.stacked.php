@@ -29,9 +29,22 @@ class Stacked {
 			'hierarchical' => false,
 			'menu_position' => 5,
 			'menu_icon' => STACKED_PLUGIN_DIR . '/images/people.png',
-			'supports' => array('title','editor','author','thumbnail','excerpt','comments')
+			'supports' => array('title','editor')
 		);
 
-		register_post_type('person',$args);
+		register_post_type( 'person',$args );
+	}
+
+	public static function enter_name_here( $title ) {
+		$screen = get_current_screen();
+
+		if ( 'person' == $screen->post_type )
+			$title = "Enter Team Member's Name";
+
+		return $title;
+	}
+
+	public static function stack_pages($atts, $content = null) {
+		return "Yay!";
 	}
 }
