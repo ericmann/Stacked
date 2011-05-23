@@ -1,5 +1,5 @@
 @font-face { font-family: Placard; font-weight: normal; src: url('Placard-Condensed.woff'); }
-@font-face { font-family: Lane; font-weight: normal; src: url('Lane-Condensed.woff'); }
+@font-face { font-family: Lane; font-weight: normal; src: url('Lane-Narrow.woff'); }
 body{
 	font-family: Arial, sans-serif;
 }
