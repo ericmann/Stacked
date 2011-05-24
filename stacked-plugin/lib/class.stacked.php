@@ -71,7 +71,8 @@ class Stacked {
 	}
 
 	public static function enable_front_page_stacks( $query ){
-		$query->query_vars['post_type'] = array( 'page', 'stack' );
+		if('' == $query->query_vars['post_type'] && 0 != $query->query_vars['page_id'])
+			$query->query_vars['post_type'] = array( 'page', 'stack' );
 	}
 
 	public static function enter_name_here( $title ) {
