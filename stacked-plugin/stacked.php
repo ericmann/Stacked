@@ -17,8 +17,10 @@ if( ! defined('STACKED_PLUGIN_DIR') )
 require_once('/lib/class.stacked.php');
 
 add_action( 'init', array('Stacked', 'register_people') );
+add_action( 'init', array('Stacked', 'register_stacks') );
 
 add_filter( 'enter_title_here', array('Stacked', 'enter_name_here') );
+add_filter( 'get_pages', array('Stacked', 'add_pages_to_dropdown'), 10, 2 );
 
 add_shortcode( 'pageOrder', array('Stacked', 'stack_pages') );
 ?>

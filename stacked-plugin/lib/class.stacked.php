@@ -35,6 +35,41 @@ class Stacked {
 		register_post_type( 'person',$args );
 	}
 
+	public static function register_stacks() {
+		$labels = array(
+			'name' => __('Stacks', 'stacked'),
+			'singular_name' => __('Stack', 'stacked'),
+			'add_new' => __('Add New', 'stacked'),
+			'add_new_item' => __('Add New Stack', 'stacked'),
+			'edit_item' => __('Edit Stack', 'stacked'),
+			'new_item' => __('New Stack', 'stacked'),
+			'view_item' => __('View Stack', 'stacked'),
+			'search_items' => __('Search Stacks', 'stacked'),
+			'not_found' =>  __('No stacks found', 'stacked'),
+			'not_found_in_trash' => __('No stacks found in Trash', 'stacked'),
+			'parent_item_colon' => '',
+			'menu_name' => 'Stacks'
+		);
+
+		$args = array(
+			'labels' => $labels,
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'query_var' => true,
+			'rewrite' => true,
+			'capability_type' => 'page',
+			'has_archive' => false,
+			'hierarchical' => true,
+			'menu_position' => 20,
+			'menu_icon' => STACKED_PLUGIN_DIR . '/images/stacks.png',
+			'supports' => array('title')
+		);
+
+		register_post_type( 'stack',$args );
+	}
+
 	public static function enter_name_here( $title ) {
 		$screen = get_current_screen();
 
@@ -46,5 +81,17 @@ class Stacked {
 
 	public static function stack_pages($atts, $content = null) {
 		return "Yay!";
+	}
+
+	public static function add_pages_to_dropdown( $pages, $r ){
+		if('page_on_front' == $r['name']){
+			$stackArgs = array(
+				'post_type'=>'stack'
+			);
+			$stacks = get_posts($stackArgs);
+			$pages = array_merge($pages, $stacks);
+		}
+
+		return $pages;
 	}
 }
