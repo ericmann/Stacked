@@ -70,6 +70,10 @@ class Stacked {
 		register_post_type( 'stack',$args );
 	}
 
+	public static function enable_front_page_stacks( $query ){
+		$query->query_vars['post_type'] = array( 'page', 'stack' );
+	}
+
 	public static function enter_name_here( $title ) {
 		$screen = get_current_screen();
 

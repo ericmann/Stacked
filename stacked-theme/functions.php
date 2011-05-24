@@ -10,3 +10,4 @@ function stacked_plugin_not_installed() {
 
 /** Start the engine **/
 require_once(TEMPLATEPATH.'/lib/init.php');
+?>
