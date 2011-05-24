@@ -1,5 +1,9 @@
 <?php
 class Stacked {
+	public static function init() {
+		add_image_size( 'headshot', 120, 140, true );
+	}
+
 	public static function register_people() {
 		$labels = array(
 			'name' => __('People', 'stacked'),
@@ -29,7 +33,7 @@ class Stacked {
 			'hierarchical' => false,
 			'menu_position' => 5,
 			'menu_icon' => STACKED_PLUGIN_DIR . '/images/people.png',
-			'supports' => array('title','editor')
+			'supports' => array('title','editor', 'thumbnail')
 		);
 
 		register_post_type( 'person',$args );
@@ -84,6 +88,39 @@ class Stacked {
 		return $title;
 	}
 
+	public static function person_meta_box() {
+		global $post;
+		$title = get_post_meta($post->ID, 'person_title', true);
+		$email = get_post_meta($post->ID, 'person_email', true);
+		$phone = get_post_meta($post->ID, 'person_phone', true);
+		$linkedin = get_post_meta($post->ID, 'person_linkedin', true);
+		$twitter = get_post_meta($post->ID, 'person_twitter', true);
+		$website = get_post_meta($post->ID, 'person_website', true);
+
+		echo'<input type="hidden" name="person_meta_nonce" id="person_meta_nonce" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
+
+		echo '<table><tbody>';
+	  	echo '<tr><td><label for="person_title" style="margin-right: 10px;">Team Member Title:</label></td>';
+	  	echo '<td><input type="text" name="person_title" value="' . $title . '" size="100" /></td></tr>';
+
+		echo '<tr><td><label for="person_email" style="margin-right: 10px;">Team Member Email:</label></td>';
+		echo '<td><input type="text" name="person_email" value="' . $email .'" size="100" /></td></tr>';
+
+		echo '<tr><td><label for="person_phone" style="margin-right: 10px;">Team Member Phone:</label></td>';
+		echo '<td><input type="text" name="person_phone" value="' . $phone . '" size="100" /></td></tr>';
+
+		echo '<tr><td><label for="person_linkedin" style="margin-right: 10px;">LinkedIn Profile:</label></td>';
+		echo '<td><input type="text" name="person_linkedin" value="' . $linkedin . '" size="100" /></td></tr>';
+
+		echo '<tr><td><label for="person_twitter" style="margin-right: 10px;">Twitter Profile:</label></td>';
+		echo '<td><input type="text" name="person_twitter" value="' . $twitter . '" size="100" /></td></tr>';
+
+		echo '<tr><td><label for="person_website" style="margin-right: 10px;">Website:</label></td>';
+		echo '<td><input type="text" name="person_website" value="' . $website . '" size="100" /></td></tr>';
+
+		echo '</tbody></table>';
+	}
+
 	public static function stack_pages($atts, $content = null) {
 		return "Yay!";
 	}
@@ -98,5 +135,23 @@ class Stacked {
 		}
 
 		return $pages;
+	}
+
+	public static function add_meta_boxes(){
+		add_meta_box('person-additional-info', 'Additional Information', array('Stacked', 'person_meta_box'), 'person', 'normal', 'high');
+	}
+
+	public static function add_headshot() {
+		remove_meta_box( 'postimagediv', 'person', 'side' );
+		add_meta_box( 'postimagediv', __('Headshot', 'stacked'), 'post_thumbnail_meta_box', 'person', 'side' );
+	}
+
+	public static function rename_headshot( $featured ) {
+		if( strpos($featured, 'Set featured image') != 0 )
+			$featured = str_replace('Set featured image', 'Set team member headshot', $featured);
+
+		if( strpos($featured, 'Remove featured image') != 0 )
+			$featured = str_replace('Remove featured image', 'Remove team member headshot', $featured);
+		return $featured;
 	}
 }
