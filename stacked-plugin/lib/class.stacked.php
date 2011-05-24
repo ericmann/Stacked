@@ -104,7 +104,7 @@ class Stacked {
 	  	echo '<td><input type="text" name="person_title" value="' . $title . '" size="100" /></td></tr>';
 
 		echo '<tr><td><label for="person_email" style="margin-right: 10px;">Team Member Email:</label></td>';
-		echo '<td><input type="text" name="person_email" value="' . $email .'" size="100" /></td></tr>';
+		echo '<td><input type="text" name="person_email" value="' . $email . '" size="100" /></td></tr>';
 
 		echo '<tr><td><label for="person_phone" style="margin-right: 10px;">Team Member Phone:</label></td>';
 		echo '<td><input type="text" name="person_phone" value="' . $phone . '" size="100" /></td></tr>';
@@ -119,6 +119,35 @@ class Stacked {
 		echo '<td><input type="text" name="person_website" value="' . $website . '" size="100" /></td></tr>';
 
 		echo '</tbody></table>';
+	}
+
+	public static function save_person_meta( $post_id ) {
+		global $post;
+
+		if( ! wp_verify_nonce( $_POST["person_meta_nonce"], plugin_basename(__FILE__) ) )
+			return $post_id;
+
+		if( 'person' == $_POST['post_type'] && ! current_user_can( 'edit_post', $post_id ))
+			return $post_id;
+
+		$meta = array(
+			'person_title' => $_POST['person_title'],
+			'person_email' => $_POST['person_email'],
+			'person_phone' => $_POST['person_phone'],
+			'person_linkedin' => $_POST['person_linkedin'],
+			'person_twitter' => $_POST['person_twitter'],
+			'person_website' => $_POST['person_website']
+		);
+
+		foreach($meta as $key=>$value){
+			if( "" == $value) {
+				delete_post_meta( $post_id, $key );
+			} else if( "" == get_post_meta($post_id, $key, true) ) {
+				add_post_meta( $post_id, $key, $value, true );
+			} else if( get_post_meta($post_id, $key, true) != $value ) {
+				update_post_meta($post_id, $key, $value);
+			}
+		}
 	}
 
 	public static function stack_pages($atts, $content = null) {

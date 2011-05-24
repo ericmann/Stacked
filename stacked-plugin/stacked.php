@@ -20,6 +20,7 @@ add_action( 'init', array('Stacked', 'init') );
 add_action( 'init', array('Stacked', 'register_people') );
 add_action( 'init', array('Stacked', 'register_stacks') );
 add_action( 'admin_init', array('Stacked', 'add_meta_boxes') );
+add_action( 'save_post', array('Stacked', 'save_person_meta') );
 add_action( 'do_meta_boxes', array('Stacked', 'add_headshot') );
 add_action( 'pre_get_posts', array('Stacked', 'enable_front_page_stacks') );
 
