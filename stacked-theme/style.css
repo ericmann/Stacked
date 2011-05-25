@@ -93,6 +93,10 @@ textarea,
 	border: 1px solid #e6e6e6;
 }
 
+.breadcrumb {
+	display: none;
+}
+
 ol,
 ol li,
 ul,
@@ -143,15 +147,17 @@ a img {
 ------------------------------------------------------------ */
 
 #header {
-	height: 80px;
+	height: 312px;
 	width: 960px;
 }
 
 #title-area {
-	float: left;
+	margin: auto;
 	overflow: hidden;
-	padding: 20px 0 0;
-	width: 400px;
+	width: 592px;
+	height: 312px;
+	background: transparent url(images/site-head.png);
+	text-indent: -960px;
 }
 
 #title {
@@ -666,12 +672,23 @@ blockquote {
 	margin: 0 0 40px;
 }
 
+.page .entry-title {
+	display: none;
+}
+
 .entry-content {
 	overflow: hidden;
 }
 
 .entry-content p {
 	padding: 0 0 15px;
+}
+
+.entry-content p.intro {
+	color: #7F7D89;
+	font-size: 16px;
+	padding-left: 200px;
+	padding-right: 200px;
 }
 
 .clear {
@@ -900,6 +917,9 @@ h6 {
 	text-transform: uppercase;
 }
 
+.post-edit-link {
+	display: none;
+}
 
 /* Author Box
 ------------------------------------------------------------ */
@@ -1379,6 +1399,7 @@ div.gform_footer input.button:hover,
 	padding: 5px 0;
 	text-transform: uppercase;
 	width: 960px;
+	display: none;
 }
 
 #footer p {
