@@ -1,7 +1,12 @@
-@font-face { font-family: Placard; font-weight: normal; src: url('Placard-Condensed.woff'); }
-@font-face { font-family: Lane; font-weight: normal; src: url('Lane-Narrow.woff'); }
-body{
-	font-family: Arial, sans-serif;
+body, h1, h2, h2 a, h2 a:visited, h3, h4, h5, h6, p, input, select, textarea {
+    color: #333333;
+    font-family: Arial,Helvetica,Tahoma,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
 }
 
 #wrapper {
@@ -9,36 +14,28 @@ body{
 	margin: auto;
 }
 
-h1.impact {
-	font-family: Placard, sans-serif;
-	text-transform: uppercase;
-	color: #DF1E3F;
-	text-align: center;
-	font-size: 300px;
-	margin: 0 0 -40px;
-	padding: 0;
+#header-image {
+	height: 312px;
+	width: 592px;
+	margin: auto;
+	background: transparent url("site-head.png");
 }
 
-h2.sub-impact{
-	font-family: Lane, sans-serif;
-	font-weight: normal;
-	text-transform: uppercase;
-	text-align: center;
-	margin: 0;
-	padding: 0;
-	font-size: 65px;
+.inner {
+	margin: 20px 0;
 }
 
 p.details {
 	color: #7F7D89;
-	font-size: 17px;
-	margin: 0 160px;
+	font-size: 16px;
+	margin: 0 200px;
 }
 
 #image {
 	width: 960px;
 	height: 272px;
 	background: url('static.png') transparent;
+	margin: 0 auto 10px;
 }
 
 p.contact {
