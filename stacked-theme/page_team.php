@@ -5,5 +5,4 @@
  *
  * @package StackedTheme
  */
-
-genesis();
+echo 'TEAM-TEMPLATE';

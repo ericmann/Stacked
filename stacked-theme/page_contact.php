@@ -5,5 +5,4 @@
  *
  * @package StackedTheme
  */
-
-genesis();
+echo 'CONTACT-TEMPLATE';

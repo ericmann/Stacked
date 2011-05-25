@@ -18,6 +18,7 @@ function stack_loop() {
 	$stackCount = 0;
 
 	foreach($stackArray as $slug) {
+		$stackCount++;
 		$pageLoop = new WP_Query(
 			array(
 				'name' => $slug,
@@ -26,31 +27,42 @@ function stack_loop() {
 		);
 
 		while( $pageLoop->have_posts() ) : $pageLoop->the_post();
+			switch(get_post_meta( get_the_ID(), '_wp_page_template', true )) {
+				case 'page_blog.php':
+					include('page_blog.php');
+					break;
+				case 'page_team.php':
+					include('page_team.php');
+					break;
+				case 'page_contact.php':
+					include('page_contact.php');
+					break;
+				default:
+					include('page_default.php');
+			}
 
-			do_action( 'genesis_before_post' ); ?>
-
-			<div <?php post_class(); ?>>
-
-				<?php do_action( 'genesis_before_post_title' ); ?>
-				<?php do_action( 'genesis_post_title' ); ?>
-				<?php do_action( 'genesis_after_post_title' ); ?>
-
-				<?php do_action( 'genesis_before_post_content' ); ?>
-
-				<div class="entry-content">
-					<?php do_action( 'genesis_post_content' ); ?>
-				</div><!-- end .entry-content -->
-
-				<?php do_action( 'genesis_after_post_content' ); ?>
-
-			</div><!-- end .postclass -->
-<?php
-
-			do_action( 'genesis_after_post' );
 		endwhile;
 
 		do_action( 'genesis_after_endwhile' );
 	}
+
+	echo '<ul id="locked-navigation">';
+	$stackCount = 0;
+	foreach($stackArray as $slug){
+		$stackCount++;
+		$pageLoop = new WP_Query(
+			array(
+				'name' => $slug,
+				'post_type' => 'any'
+			)
+		);
+
+		while( $pageLoop->have_posts() ) : $pageLoop->the_post();
+			if( $stackCount>1 )
+			echo '<li class="navigation-el"><a href="#' . $slug . '">' . get_the_title() . '</a></li>';
+		endwhile;
+	}
+	echo '</ul>';
 }
 
 genesis();
