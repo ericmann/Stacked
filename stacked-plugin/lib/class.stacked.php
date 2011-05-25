@@ -150,8 +150,15 @@ class Stacked {
 		}
 	}
 
-	public static function stack_pages($atts, $content = null) {
-		return "Yay!";
+	public static function stack_meta_box(){
+		global $post;
+
+		$pageList = get_post_meta($post->ID, 'stack', true);
+
+		echo'<input type="hidden" name="stack_meta_nonce" id="stack_meta_nonce" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
+
+		echo '<label for="page_list" style="margin-right: 10px;">Pages to Include:</label>';
+	  	echo '<input type="text" name="page_list" value="' . $pageList . '" size="100" />';
 	}
 
 	public static function add_pages_to_dropdown( $pages, $r ){
@@ -166,10 +173,6 @@ class Stacked {
 		return $pages;
 	}
 
-	public static function add_meta_boxes(){
-		add_meta_box('person-additional-info', 'Additional Information', array('Stacked', 'person_meta_box'), 'person', 'normal', 'high');
-	}
-
 	public static function add_headshot() {
 		remove_meta_box( 'postimagediv', 'person', 'side' );
 		add_meta_box( 'postimagediv', __('Headshot', 'stacked'), 'post_thumbnail_meta_box', 'person', 'side' );
@@ -182,5 +185,30 @@ class Stacked {
 		if( strpos($featured, 'Remove featured image') != 0 )
 			$featured = str_replace('Remove featured image', 'Remove team member headshot', $featured);
 		return $featured;
+	}
+
+	public static function save_stack_meta( $post_id ) {
+		global $post;
+
+		if( ! wp_verify_nonce( $_POST["stack_meta_nonce"], plugin_basename(__FILE__) ) )
+			return $post_id;
+
+		if( 'stack' == $_POST['post_type'] && ! current_user_can( 'edit_page', $post_id ))
+			return $post_id;
+
+		$stack = $_POST['page_list'];
+
+		if( "" == $stack) {
+			delete_post_meta( $post_id, 'stack' );
+		} else if("" == get_post_meta($post_id, 'stack', true) ){
+			add_post_meta( $post_id, 'stack', $stack, true );
+		} else if( get_post_meta($post_id, 'stack', true) != $stack ){
+			update_post_meta($post_id, 'stack', $stack);
+		}
+	}
+
+	public static function add_meta_boxes(){
+		add_meta_box('person-additional-info', 'Additional Information', array('Stacked', 'person_meta_box'), 'person', 'normal', 'high');
+		add_meta_box('stack-info', 'List of Pages in Stack', array('Stacked', 'stack_meta_box'), 'stack', 'normal', 'high');
 	}
 }
