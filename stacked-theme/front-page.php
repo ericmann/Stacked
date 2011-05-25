@@ -6,4 +6,8 @@
  * @package StackedTheme
  */
 
-genesis();
+if('stack'==get_post_type()){
+	include('stacked-front-page.php');
+} else {
+	include('standard-front-page.php');
+}
