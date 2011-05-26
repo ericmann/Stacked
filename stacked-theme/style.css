@@ -93,6 +93,14 @@ textarea,
 	border: 1px solid #e6e6e6;
 }
 
+hr {
+	width: 20%;
+	margin-right: 80%;
+	color: red;
+	background-color: red;
+	height: 3px;
+}
+
 .breadcrumb {
 	display: none;
 }
@@ -689,6 +697,21 @@ blockquote {
 	font-size: 16px;
 	padding-left: 200px;
 	padding-right: 200px;
+}
+
+.entry-content p.title {
+	color: #000000;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+.entry-content p.emphasis {
+	color: #000000;
+	font-weight: bold;
+}
+
+.entry-content p.text {
+	color: #7F7D89;
 }
 
 .clear {

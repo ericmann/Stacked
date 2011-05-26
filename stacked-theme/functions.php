@@ -8,6 +8,9 @@ function stacked_plugin_not_installed() {
 	</div>';
 }
 
+add_editor_style();
+
+
 /** Start the engine **/
 require_once(TEMPLATEPATH.'/lib/init.php');
 
