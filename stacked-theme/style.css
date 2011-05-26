@@ -1565,3 +1565,54 @@ div.gform_wrapper .gform_footer {
 	margin: 0;
 	padding: 0;
 }
+
+.contactForm .field
+{
+	padding:10px 0 2px 0;
+}
+.contactForm label
+{
+	display:block;
+	font-weight:bold;
+}
+.contactForm .textbox,
+.contactForm .textarea,
+.contactForm .submit
+{
+	border:1px solid #ccc;
+	padding:6px;
+	font-weight:bold;
+	color:#777;
+	width:300px;
+}
+.contactForm .textbox,
+.contactForm .textarea {
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #ddd;
+}
+.contactForm .textbox{
+	width: 400px;
+}
+.contactForm .textarea
+{
+	width:400px;
+	height:100px;
+}
+.contactForm .submit
+{
+	background:#746d55;
+	color:#fff;
+	font-size:90%;
+	font-weight:bold;
+	width:150px;
+}
+
+.contactForm input
+{
+	color:green;
+}
+
+.contactForm td{
+	padding-left: 20px;
+	padding-right: 20px;
+}
