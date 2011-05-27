@@ -30,6 +30,7 @@ function stack_loop() {
 			if($stackCount == 2)
 				echo '<div class="stack-wrap">';
 
+			echo '<a name="' . $slug . '"></a>';
 			switch(get_post_meta( get_the_ID(), '_wp_page_template', true )) {
 				case 'page_blog.php':
 					include('page_blog.php');

@@ -362,11 +362,14 @@ li.sfHover {
 ------------------------------------------------------------ */
 
 ul#locked-navigation {
-	width: 130px;
+	width: 120px;
 	float: left;
 	position: relative;
 	top: 10px;
 	text-align: right;
+	padding-right: 15px;
+	border-right: 3px solid #ccc;
+	height: 300px;
 }
 
 ul#locked-navigation li {
