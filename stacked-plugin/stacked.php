@@ -14,7 +14,7 @@ add_filter( 'stacked-installed', '__return_true' );
 if( ! defined('STACKED_PLUGIN_DIR') )
 	define( 'STACKED_PLUGIN_DIR', WP_PLUGIN_URL . '/stacked-plugin' );
 
-require_once('/lib/class.stacked.php');
+require_once('lib/class.stacked.php');
 
 add_action( 'init', array('Stacked', 'init') );
 add_action( 'init', array('Stacked', 'register_people') );

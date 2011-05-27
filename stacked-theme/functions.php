@@ -1,5 +1,5 @@
 <?php
-require_once('/lib/class.stacked-theme.php');
+require_once('lib/class.stacked-theme.php');
 
 if ( ! apply_filters( 'stacked-installed', false ) )
 	add_action( 'admin_notices', array('Stacked_Theme', 'plugin_not_installed') );
