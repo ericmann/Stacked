@@ -99,6 +99,7 @@ hr {
 	color: red;
 	background-color: red;
 	height: 3px;
+	
 }
 
 .breadcrumb {
@@ -360,139 +361,19 @@ li.sfHover {
 /* Primary Navigation
 ------------------------------------------------------------ */
 
-#nav {
-	background-color: #333;
-	border-bottom: 1px solid #666;
-	clear: both;
-	color: #fff;
-	overflow: hidden;
-	text-transform: uppercase;
-	width: 960px;
+ul#locked-navigation {
+	width: 130px;
+	float: left;
+	top: 0;
+	text-align: right;
 }
 
-#nav ul {
-	float: left;
-	width: 100%;
-}
-
-#nav li {
-	float: left;
+ul#locked-navigation li {
 	list-style-type: none;
 }
 
-#nav li a {
-	color: #fff;
-	display: block;
-	font-size: 12px;
-	padding: 7px 10px 5px;
-	position: relative;
-	text-decoration: none;
-}
-
-#nav li a:hover,
-#nav li a:active,
-#nav .current_page_item a,
-#nav .current-cat a,
-#nav .current-menu-item a {
-	background-color: #000;
-	color: #fff;
-}
-
-#nav li a.sf-with-ul {
-	padding-right: 25px;
-}
-
-#nav li a .sf-sub-indicator {
-	background: url(images/arrow-down.png) no-repeat;
-	display: block;
-	height: 10px;
-	overflow: hidden;
-	position: absolute;
-	right: 10px;
-	text-indent: -9999px;
-	top: 12px;
-	width: 10px;
-}
-
-#nav li li a,
-#nav li li a:link,
-#nav li li a:visited {
-	background-color: #333;
-	border: 1px solid #666;
-	border-top-width: 0;
-	color: #fff;
-	font-size: 11px;
-	padding: 5px 10px;
-	position: relative;
-	width: 158px;
-}
-
-#nav li li a:hover,
-#nav li li a:active {
-	background-color: #000;
-}
-
-#nav li li a .sf-sub-indicator {
-	background: url(images/arrow-right.png) no-repeat;
-	top: 10px;
-}
-
-#nav li ul {
-	height: auto;
-	left: -9999px;
-	position: absolute;
-	width: 180px;
-	z-index: 9999;
-}
-
-#nav li ul a {
-	width: 160px;
-}
-
-#nav li ul ul {
-	margin: -31px 0 0 179px;
-}
-
-#nav li:hover>ul,
-#nav li.sfHover ul {
-	left: auto;
-}
-
-
-/* Primary Navigation Extras
------------------------------------------------------------- */
-
-#nav li.right {
-	float: right;
-	padding: 6px 10px 5px;
-}
-
-#nav li.right a {
-	background: none;
-	border: none;
-	color: #fff;
-	display: inline;
-	text-decoration: none;
-}
-
-#nav li.right a:hover {
-	color: #fff;
-	text-decoration: underline;
-}
-
-#nav li.search {
-	padding: 0 10px;
-}
-
-#nav li.rss a {
-	background: url(images/rss.png) no-repeat center left;
-	margin: 0 0 0 10px;
-	padding: 7px 0 5px 16px;
-}
-
-#nav li.twitter a {
-	background: url(images/twitter-nav.png) no-repeat center left;
-	padding: 7px 0 5px 20px;
+ul#locked-navigation li a {
+	color: #000000;
 }
 
 
@@ -605,6 +486,11 @@ li.sfHover {
 	margin: 20px 0;
 	overflow: hidden;
 	width: 960px;
+}
+
+.stack-wrap {
+	float: right;
+	width: 810px;
 }
 
 
@@ -1591,11 +1477,11 @@ div.gform_wrapper .gform_footer {
 	box-shadow: 5px 5px 5px #ddd;
 }
 .contactForm .textbox{
-	width: 400px;
+	width: 300px;
 }
 .contactForm .textarea
 {
-	width:400px;
+	width:300px;
 	height:100px;
 }
 .contactForm .submit

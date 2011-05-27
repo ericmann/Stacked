@@ -27,6 +27,9 @@ function stack_loop() {
 		);
 
 		while( $pageLoop->have_posts() ) : $pageLoop->the_post();
+			if($stackCount == 2)
+				echo '<div class="stack-wrap">';
+
 			switch(get_post_meta( get_the_ID(), '_wp_page_template', true )) {
 				case 'page_blog.php':
 					include('page_blog.php');
@@ -42,6 +45,9 @@ function stack_loop() {
 			}
 
 		endwhile;
+
+		if( $stackCount == count($stackArray) )
+			echo '</div>';
 
 		do_action( 'genesis_after_endwhile' );
 	}

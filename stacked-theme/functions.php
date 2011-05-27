@@ -10,6 +10,11 @@ function stacked_plugin_not_installed() {
 
 add_editor_style();
 
+function stacked_enqueue_scripts(){
+	if( ! is_admin() )
+		wp_enqueue_script( 'stacked-script', get_bloginfo('stylesheet_directory') . '/scripts/stacked.js', array('jquery'), '1.0' );
+}
+add_action( 'wp_enqueue_scripts', 'stacked_enqueue_scripts' );
 
 /** Start the engine **/
 require_once(TEMPLATEPATH.'/lib/init.php');
