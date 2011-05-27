@@ -364,7 +364,8 @@ li.sfHover {
 ul#locked-navigation {
 	width: 130px;
 	float: left;
-	top: 0;
+	position: relative;
+	top: 10px;
 	text-align: right;
 }
 
