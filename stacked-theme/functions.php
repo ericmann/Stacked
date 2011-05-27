@@ -1,20 +1,8 @@
 <?php
+require_once('/lib/class.stacked-theme.php');
+
 if ( ! apply_filters( 'stacked-installed', false ) )
-	add_action( 'admin_notices', 'stacked_plugin_not_installed' );
-
-function stacked_plugin_not_installed() {
-	echo '<div id="message" class="error">
-		<p>This theme requires the Stacked Plugin for proper operation.  Please install it to ensure proper functionality!</p>
-	</div>';
-}
-
-add_editor_style();
-
-function stacked_enqueue_scripts(){
-	if( ! is_admin() )
-		wp_enqueue_script( 'stacked-script', get_bloginfo('stylesheet_directory') . '/scripts/stacked.js', array('jquery'), '1.0' );
-}
-add_action( 'wp_enqueue_scripts', 'stacked_enqueue_scripts' );
+	add_action( 'admin_notices', array('Stacked_Theme', 'plugin_not_installed') );
 
 /** Start the engine **/
 require_once(TEMPLATEPATH.'/lib/init.php');
@@ -27,12 +15,14 @@ genesis_unregister_layout( 'sidebar-content-sidebar' );
 
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
 remove_action( 'genesis_footer', 'genesis_do_footer' );
+remove_action( 'genesis_before_post_content', 'genesis_post_info' );
+remove_action( 'genesis_after_post_content', 'genesis_post_meta' );
 
-add_filter('genesis_options', 'define_genesis_setting_custom', 10, 2);
-function define_genesis_setting_custom($options, $setting) {
-    if($setting == GENESIS_SETTINGS_FIELD) {
-        $options['site_layout'] = 'full-width-content';
-    }
-    return $options;
-}
+add_editor_style();
+
+add_action( 'genesis_before_post_title', array('Stacked_Theme', 'post_info') );
+add_action( 'wp_enqueue_scripts', array('Stacked_Theme', 'enqueue_scripts') );
+
+add_filter( 'genesis_options', array('Stacked_Theme', 'setting_custom'), 10, 2 );
+
 ?>

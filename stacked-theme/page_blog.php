@@ -11,7 +11,7 @@ $exclude = genesis_get_option('blog_cat_exclude') ? explode(',', str_replace(' '
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 $cf = genesis_get_custom_field('query_args'); /** Easter Egg **/
-$args = array('cat' => $include, 'category__not_in' => $exclude, 'showposts' => genesis_get_option('blog_cat_num'), 'paged' => $paged);
+$args = array('cat' => $include, 'category__not_in' => $exclude, 'showposts' => 3, 'paged' => $paged);
 $query_args = wp_parse_args($cf, $args);
 
-genesis_custom_loop( $query_args );
+Stacked_Theme::post_loop( $query_args );

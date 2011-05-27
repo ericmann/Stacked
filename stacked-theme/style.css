@@ -574,8 +574,20 @@ blockquote {
 	display: none;
 }
 
+.post .entry-title {
+	display: inherit;
+	float: left;
+}
+h2.entry-title {
+	clear: none;
+}
+
 .entry-content {
 	overflow: hidden;
+}
+.stack-wrap .type-post .entry-content {
+	clear: left;
+	margin-left: 100px;
 }
 
 .entry-content p {
@@ -813,9 +825,13 @@ h6 {
 ------------------------------------------------------------ */
 
 .post-info {
-	font-size: 11px;
+	font-size: 20px;
+	color:#555;
 	margin: 5px 0;
 	text-transform: uppercase;
+	font-weight: bold;
+	width: 100px;
+	float: left;
 }
 
 
