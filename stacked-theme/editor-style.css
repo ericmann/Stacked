@@ -12,3 +12,18 @@
 .text {
 	color: #7F7D89;
 }
+
+.left-content {
+	float: left;
+}
+.right-content {
+	width: 400px;
+	float:right;
+}
+img.right-image {
+	float: right;
+}
+img.left-image {
+	float: left;
+	margin-left: 30px;
+}
