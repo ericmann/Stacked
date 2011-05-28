@@ -75,7 +75,8 @@ class Stacked {
 	}
 
 	public static function enable_front_page_stacks( $query ){
-		if('' == $query->query_vars['post_type'] && 0 != $query->query_vars['page_id'])
+
+		if(( ! isset($query->query_vars['post_type']) || '' == $query->query_vars['post_type']) && 0 != $query->query_vars['page_id'])
 			$query->query_vars['post_type'] = array( 'page', 'stack' );
 	}
 
@@ -135,6 +136,9 @@ class Stacked {
 	public static function save_person_meta( $post_id ) {
 		global $post;
 
+		if ( ! isset( $_POST["person_meta_nonce"] ) )
+			return $post_id;
+
 		if( ! wp_verify_nonce( $_POST["person_meta_nonce"], plugin_basename(__FILE__) ) )
 			return $post_id;
 
@@ -163,6 +167,9 @@ class Stacked {
 
 	public static function save_stack_meta( $post_id ) {
 		global $post;
+
+		if ( ! isset( $_POST["stack_meta_nonce"] ) )
+			return $post_id;
 
 		if( ! wp_verify_nonce( $_POST["stack_meta_nonce"], plugin_basename(__FILE__) ) )
 			return $post_id;
