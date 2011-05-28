@@ -567,7 +567,7 @@ blockquote {
 }
 
 .post {
-	margin: 0 0 40px;
+	margin: 0 0 15px;
 }
 
 .page .entry-title {
@@ -588,6 +588,10 @@ h2.entry-title {
 .stack-wrap .type-post .entry-content {
 	clear: left;
 	margin-left: 100px;
+}
+
+.stack-wrap .less .entry-content {
+	height: 1px;
 }
 
 .entry-content p {
@@ -614,6 +618,17 @@ h2.entry-title {
 
 .entry-content p.text {
 	color: #7F7D89;
+}
+
+.more-less {
+	width: 62px;
+	height: 23px;
+	background: transparent url(images/moreless.png);
+	float: right;
+	cursor: pointer;
+}
+.more-less.more {
+	background-position: 0 -23px;
 }
 
 .clear {

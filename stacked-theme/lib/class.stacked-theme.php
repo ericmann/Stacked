@@ -37,10 +37,11 @@
 
 			<?php do_action( 'genesis_before_post_title' ); ?>
 			<?php do_action( 'genesis_post_title' ); ?>
+			<?php Stacked_Theme::more_less( get_the_ID() ); ?>
 			<?php do_action( 'genesis_after_post_title' ); ?>
 
 			<?php do_action( 'genesis_before_post_content' ); ?>
-			<div class="entry-content">
+			<div class="entry-content post-<?php the_ID(); ?>">
 				<?php do_action( 'genesis_post_content' ); ?>
 			</div><!-- end .entry-content -->
 			<?php do_action( 'genesis_after_post_content' ); ?>
@@ -68,5 +69,16 @@
 
 		$post_info = '[post_date format="m.j.y"]';
 		printf( '<div class="post-info">%s</div>', apply_filters('genesis_post_info', $post_info) );
+	}
+
+	public static function more_less( $post_ID ){
+		printf( '<div class="more-less less post-%s"></div>', $post_ID );
+	}
+
+	public static function more_less_filter( $classes ) {
+		if( array_search('type-post', $classes) )
+			$classes[] = 'less';
+		
+		return $classes;
 	}
 }

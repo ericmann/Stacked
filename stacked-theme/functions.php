@@ -23,6 +23,7 @@ add_editor_style();
 add_action( 'genesis_before_post_title', array('Stacked_Theme', 'post_info') );
 add_action( 'wp_enqueue_scripts', array('Stacked_Theme', 'enqueue_scripts') );
 
+add_filter( 'post_class', array('Stacked_Theme', 'more_less_filter') );
 add_filter( 'genesis_options', array('Stacked_Theme', 'setting_custom'), 10, 2 );
 
 ?>
