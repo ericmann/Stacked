@@ -6,6 +6,8 @@
  * @package StackedTheme
  */
 
+$sent = false;
+
 if(!empty($_POST['send_mail']) && empty($_POST['e-mail'])) {
 	$to = get_bloginfo('admin_email');
 	$subject = "Contact Form Submission";

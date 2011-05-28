@@ -12,6 +12,10 @@ $args = array(
 	global $wp_query, $more, $loop_counter;
 	$loop_counter = 0;
 
+	echo '<div class="title-content">';
+	the_content();
+	echo '</div>';
+
 	/** save the original query **/
 	$orig_query = $wp_query;
 
@@ -31,11 +35,13 @@ $args = array(
 ?>
 	<div <?php post_class(); ?>>
 
+	<?php the_post_thumbnail( 'headshot' ); ?>
+
 	<div class="person-name"><?php the_title(); ?></div>
 
-	<?php if( "" != $title ) { ?>
-		<div class="person-title"><?php echo $title; ?></div>
-	<?php } ?>
+	<div class="person-title">
+		<?php if( "" != $title ) echo $title; ?>
+	</div>
 
 	<?php if( "" != $email ) { ?>
 		<div class="person-email"><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></div>
@@ -45,6 +51,8 @@ $args = array(
 		<div class="person-phone"><?php echo $phone; ?></div>
 	<?php } ?>
 
+	<div class="person-spacer"></div>
+
 	<?php if( "" != $linkedin ) { ?>
 		<div class="person-linkedin"><a href="http://linkedin.com/in/<?php echo $linkedin; ?>" target="_blank">LinkedIn</a></div>
 	<?php } ?>
@@ -53,8 +61,14 @@ $args = array(
 		<div class="person-twitter"><a href="http://twitter.com/<?php echo $twitter; ?>" target="_blank">Twitter</a></div>
 	<?php } ?>
 
-	<div class="person-bio">
-		<?php the_content(); ?>
+	<div class="person-bio-tab">
+		<div class="bio">Bio</div>
+		<div class="bio-tab less person-<?php the_ID(); ?>"></div>
+	</div>
+	<div class="person-bio person-<?php the_ID(); ?>">
+		<div class="bio-wrap">
+			<?php the_content(); ?>
+		</div>
 	</div>
 
 	</div><!-- end .postclass -->
@@ -72,3 +86,5 @@ $args = array(
 
 	/** restore original query **/
 	$wp_query = $orig_query; wp_reset_query();
+
+	?><div class="clear"></div>

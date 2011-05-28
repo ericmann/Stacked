@@ -641,6 +641,87 @@ h2.entry-title {
 	margin: 0 0 15px;
 }
 
+.title-content {
+	margin-bottom: 20px;
+}
+
+.type-person {
+	width: 250px;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.type-person img {
+	margin-left: 65px;
+}
+
+.person-name {
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	padding: 10px;
+}
+
+.person-title {
+	color: #444;
+	text-align: center;
+	font-size: 10px;
+	line-height: 14px;
+	height: 40px;
+}
+
+.person-email a,
+.person-phone,
+.person-linkedin a,
+.person-twitter a,
+.person-bio-tab {
+	color: #999;
+	font-weight: bold;
+}
+
+.person-spacer {
+	height: 20px;
+}
+
+.person-bio-tab .bio {
+	float: left;
+}
+.person-bio-tab .bio-tab {
+	cursor: pointer;
+	float: left;
+	height: 25px;
+	width: 23px;
+	background: transparent url(images/updown.png);
+}
+
+.person-bio-tab .bio-tab.more {
+	background-position: 0 -23px;
+}
+
+.person-bio {
+	width: 700px;
+	display: none;
+	margin-top: 30px;
+	position: absolute;
+	z-index: 10;
+	padding-bottom: 20px;
+}
+
+.bio-wrap {
+	background-color: #fff;
+	border: 1px solid #555;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #555;
+	padding: 10px;
+	width: 700px;
+}
+
+.bio-wrap p {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 
 /* Column Classes
 ------------------------------------------------------------ */
