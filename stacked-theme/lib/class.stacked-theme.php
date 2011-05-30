@@ -63,6 +63,76 @@
 		$wp_query = $orig_query; wp_reset_query();
 	}
 
+	public static function stack_loop() {
+	$loop = new WP_Query(
+		array(
+			'post_type' => 'stack',
+			'posts_per_page' => 1
+		)
+	);
+
+	while( $loop->have_posts() ) : $loop->the_post();
+		$postList = get_post_meta( get_the_ID(), 'stack', true );
+	endwhile;
+
+	$stackArray = explode(',', str_replace(' ', '', $postList));
+	$stackCount = 0;
+
+	foreach($stackArray as $slug) {
+		$stackCount++;
+		$pageLoop = new WP_Query(
+			array(
+				'name' => $slug,
+				'post_type' => 'page'
+			)
+		);
+
+		while( $pageLoop->have_posts() ) : $pageLoop->the_post();
+			if($stackCount == 2)
+				echo '<div class="stack-wrap">';
+
+			echo '<a name="' . $slug . '"></a>';
+			switch(get_post_meta( get_the_ID(), '_wp_page_template', true )) {
+				case 'page_blog.php':
+					include(get_stylesheet_directory() . '/page_blog.php');
+					break;
+				case 'page_team.php':
+					include(get_stylesheet_directory() . '/page_team.php');
+					break;
+				case 'page_contact.php':
+					include(get_stylesheet_directory() . '/page_contact.php');
+					break;
+				default:
+					include(get_stylesheet_directory() . '/page_default.php');
+			}
+
+		endwhile;
+
+		if( $stackCount == count($stackArray) )
+			echo '</div>';
+
+		do_action( 'genesis_after_endwhile' );
+	}
+
+	echo '<ul id="locked-navigation">';
+	$stackCount = 0;
+	foreach($stackArray as $slug){
+		$stackCount++;
+		$pageLoop = new WP_Query(
+			array(
+				'name' => $slug,
+				'post_type' => 'any'
+			)
+		);
+
+		while( $pageLoop->have_posts() ) : $pageLoop->the_post();
+			if( $stackCount>1 )
+			echo '<li class="navigation-el"><a href="#' . $slug . '">' . get_the_title() . '</a></li>';
+		endwhile;
+	}
+	echo '</ul>';
+}
+
 	public static function post_info() {
 		if ( is_page() )
 			return;
@@ -81,4 +151,5 @@
 		
 		return $classes;
 	}
+
 }

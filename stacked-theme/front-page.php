@@ -5,9 +5,9 @@
  *
  * @package StackedTheme
  */
-
 if('stack'==get_post_type()){
-	include('stacked-front-page.php');
-} else {
-	include('standard-front-page.php');
+	remove_action( 'genesis_loop', 'genesis_do_loop' );
+	add_action( 'genesis_loop', array( 'Stacked_Theme', 'stack_loop' ) );
 }
+
+genesis();
