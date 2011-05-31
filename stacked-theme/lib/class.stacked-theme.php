@@ -134,7 +134,7 @@
 }
 
 	public static function post_info() {
-		if ( is_page() )
+		if ( is_page() || is_singular('stack') )
 			return;
 
 		$post_info = '[post_date format="m.j.y"]';
@@ -152,4 +152,15 @@
 		return $classes;
 	}
 
+	public static function genesis_get_comments_template() {
+		if ( is_singular('stack') )
+			return;
+
+		// Load comments only if we are on a page or post and only if comments or trackbacks are chosen
+		if ( is_single() && ( genesis_get_option( 'trackbacks_posts' ) || genesis_get_option( 'comments_posts' ) ) )
+			comments_template( '', true );
+		elseif ( is_page() && ( genesis_get_option( 'trackbacks_pages' ) || genesis_get_option( 'comments_pages' ) ) )
+			comments_template( '', true );
+		return;
+	}
 }
