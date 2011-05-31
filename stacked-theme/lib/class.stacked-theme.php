@@ -64,7 +64,7 @@
 	}
 
 	public static function stack_loop() {
-	add_filter( 'stacked_show_posts' , function( $show ) { return 3; } );
+	add_filter( 'stacked_show_posts' ,array( 'Stacked_Theme', 'show_posts_filter' ) );
 	remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
 	$loop = new WP_Query(
@@ -166,5 +166,9 @@
 		elseif ( is_page() && ( genesis_get_option( 'trackbacks_pages' ) || genesis_get_option( 'comments_pages' ) ) )
 			comments_template( '', true );
 		return;
+	}
+
+	public static function show_posts_filter( $show ) {
+		return 3;
 	}
 }
