@@ -179,6 +179,8 @@ a img {
 #title a:hover {
 	color: #333;
 	text-decoration: none;
+	height: 312px;
+	display: block;
 }
 
 #description {
@@ -597,6 +599,14 @@ h2.entry-title {
 h2.entry-title a {
 	font-size: 16px;
 	line-height: 20px;
+}
+
+.type-post .entry-content {
+	clear: both;
+	margin-left: 100px;
+}
+.type-post h1 {
+	clear: none;;
 }
 
 .entry-content {
@@ -1129,6 +1139,10 @@ p.wp-caption-text {
 	background-color: #f7f7f7;
 }
 
+.navigation a {
+	font-weight: bold;
+	color: #DF1E3F;
+}
 
 /* Primary / Secondary Sidebars
 ------------------------------------------------------------ */

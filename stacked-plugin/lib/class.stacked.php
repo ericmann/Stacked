@@ -189,6 +189,9 @@ class Stacked {
 	}
 
 	public static function add_pages_to_dropdown( $pages, $r ){
+		if(! isset($r['name']) )
+			return $pages;
+		
 		if('page_on_front' == $r['name']){
 			$stackArgs = array(
 				'post_type'=>'stack'

@@ -8,7 +8,8 @@
 $args = array(
 	'post_type' => 'person',
 	'orderby' => 'menu_order',
-	'order' => 'ASC'
+	'order' => 'ASC',
+	'showposts' => 10
 );
 
 	global $wp_query, $more, $loop_counter;

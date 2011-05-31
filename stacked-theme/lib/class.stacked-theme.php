@@ -64,6 +64,9 @@
 	}
 
 	public static function stack_loop() {
+	add_filter( 'stacked_show_posts' , function( $show ) { return 3; } );
+	remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
+
 	$loop = new WP_Query(
 		array(
 			'post_type' => 'stack',
