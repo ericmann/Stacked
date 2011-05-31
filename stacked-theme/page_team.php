@@ -6,7 +6,9 @@
  * @package StackedTheme
  */
 $args = array(
-	'post_type' => 'person'
+	'post_type' => 'person',
+	'orderby' => 'menu_order',
+	'order' => 'ASC'
 );
 
 	global $wp_query, $more, $loop_counter;

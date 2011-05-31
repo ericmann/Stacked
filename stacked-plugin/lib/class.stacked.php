@@ -33,7 +33,7 @@ class Stacked {
 			'hierarchical' => false,
 			'menu_position' => 5,
 			'menu_icon' => STACKED_PLUGIN_DIR . '/images/people.png',
-			'supports' => array('title','editor', 'thumbnail')
+			'supports' => array('title', 'editor', 'page-attributes', 'thumbnail')
 		);
 
 		register_post_type( 'person',$args );

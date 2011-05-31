@@ -95,6 +95,7 @@
 			switch(get_post_meta( get_the_ID(), '_wp_page_template', true )) {
 				case 'page_blog.php':
 					include(get_stylesheet_directory() . '/page_blog.php');
+					echo '<a href="updates" class="read-more-entries">Read More Entries</a>';
 					break;
 				case 'page_team.php':
 					include(get_stylesheet_directory() . '/page_team.php');

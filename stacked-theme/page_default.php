@@ -2,7 +2,7 @@
 do_action( 'genesis_before_post' );
 
 if($stackCount > 1)
-	echo '<hr />';
+	echo '<div class="spacer-bar"></div>';
 ?>
 
 <div <?php post_class(); ?>>

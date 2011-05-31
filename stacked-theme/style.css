@@ -93,14 +93,14 @@ textarea,
 	border: 1px solid #e6e6e6;
 }
 
-hr {
+.spacer-bar {
 	width: 20%;
 	margin-right: 80%;
 	color: red;
-	background-color: red;
+	background-color: #DF1E3F;
 	height: 3px;
-	margin-top: 40px;
-	margin-bottom: 60px;
+	margin-top: 30px;
+	margin-bottom: 40px;
 }
 
 .breadcrumb {
@@ -363,13 +363,13 @@ li.sfHover {
 ------------------------------------------------------------ */
 
 ul#locked-navigation {
-	width: 120px;
+	width: 100px;
 	float: left;
 	position: relative;
 	top: 10px;
 	text-align: right;
-	padding-right: 15px;
-	border-right: 3px solid #ccc;
+	padding-right: 30px;
+	border-right: 3px solid #DF1E3F;
 	height: 300px;
 }
 
@@ -379,6 +379,13 @@ ul#locked-navigation li {
 
 ul#locked-navigation li a {
 	color: #000000;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+ul#locked-navigation li a:hover {
+	color: #7F7D89;
+	text-decoration: none;
 }
 
 
@@ -495,7 +502,8 @@ ul#locked-navigation li a {
 
 .stack-wrap {
 	float: right;
-	width: 810px;
+	margin-top: 10px;
+	width: 800px;
 }
 
 
@@ -581,6 +589,14 @@ blockquote {
 }
 h2.entry-title {
 	clear: none;
+	font-size: 16px;
+	line-height: 20px;
+	margin:  5px 0;
+}
+
+h2.entry-title a {
+	font-size: 16px;
+	line-height: 20px;
 }
 
 .entry-content {
@@ -622,10 +638,11 @@ h2.entry-title {
 }
 
 .entry-content .left-content {
+	width: 350px;
 	float: left;
 }
 .entry-content .right-content {
-	width: 400px;
+	width: 350px;
 	float:right;
 }
 .entry-content img.right-image {
@@ -633,7 +650,6 @@ h2.entry-title {
 }
 .entry-content img.left-image {
 	float: left;
-	margin-left: 30px;
 }
 
 .more-less {
@@ -662,26 +678,23 @@ h2.entry-title {
 }
 
 .type-person {
-	width: 250px;
+	width: 245px;
 	float: left;
 	margin-left: 10px;
 	margin-right: 10px;
 }
 
 .type-person img {
-	margin-left: 65px;
 }
 
 .person-name {
 	font-weight: bold;
 	font-size: 16px;
-	text-align: center;
-	padding: 10px;
+	padding: 10px 10px 10px 0;
 }
 
 .person-title {
 	color: #444;
-	text-align: center;
 	font-size: 10px;
 	line-height: 14px;
 	height: 40px;
@@ -725,10 +738,9 @@ h2.entry-title {
 }
 
 .bio-wrap {
-	background-color: #fff;
-	border: 1px solid #555;
+	background-color: #DF1E3F;
 	border-radius: 10px;
-	box-shadow: 10px 10px 10px #555;
+	box-shadow: 10px 10px 10px #999;
 	padding: 10px;
 	width: 700px;
 }
@@ -736,6 +748,7 @@ h2.entry-title {
 .bio-wrap p {
 	padding-top: 5px;
 	padding-bottom: 5px;
+	color: #fff;
 }
 
 
@@ -937,8 +950,8 @@ h6 {
 ------------------------------------------------------------ */
 
 .post-info {
-	font-size: 20px;
-	color:#555;
+	font-size: 16px;
+	color:#000;
 	margin: 5px 0;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -1584,6 +1597,12 @@ div.gform_wrapper .gform_footer {
 	padding: 0;
 }
 
+.contactForm {
+	width: 350px;
+	border-right: 1px solid #DF1E3F;
+	float: left;
+}
+
 .contactForm .field
 {
 	padding:10px 0 2px 0;
@@ -1633,4 +1652,29 @@ div.gform_wrapper .gform_footer {
 .contactForm td{
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+#contact-info {
+	width: 350px;
+	height: 200px;
+	float: left;
+	background: transparent url(images/contact.png);
+	margin-left: 30px;
+}
+
+a.read-more-entries {
+	text-align: center;
+	border:1px solid #ccc;
+	padding:6px;
+	background:#746d55;
+	color:#fff;
+	font-size:90%;
+	font-weight:bold;
+	width:150px;
+	margin-left: 100px;
+}
+
+a.read-more-entries:hover {
+	text-decoration: none;
+	color: #999;
 }
