@@ -7,7 +7,7 @@
 	}
 	public static function enqueue_scripts(){
 		if( ! is_admin() )
-			wp_enqueue_script( 'stacked-script', get_bloginfo('stylesheet_directory') . '/scripts/stacked.js', array('jquery'), '1.0' );
+			wp_enqueue_script( 'stacked-script', get_bloginfo('stylesheet_directory') . '/scripts/stacked.js', array('jquery'), '1.0.1' );
 	}
 
 	public static function setting_custom($options, $setting) {

@@ -3,6 +3,9 @@
 		var $this = this,
 			$window = $(window);
 
+		if( navigator.userAgent.indexOf('Mobile Safari') != -1 || navigator.userAgent.indexOf('iPhone') != -1 )
+			return this;
+
 		if(typeof $this.attr('pos') == 'undefined')
 			$this.attr('pos', $this.offset().top);
 
